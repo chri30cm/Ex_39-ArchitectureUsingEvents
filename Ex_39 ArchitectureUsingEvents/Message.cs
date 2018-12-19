@@ -14,6 +14,7 @@ namespace ModelViewPresenter01
         public string MyMessage {
             get { return this.myMessage; }
             set {
+                CustomArgs customArgs = new CustomArgs();
 				//should change myMessage and raise the MessageSetEvent
 				//To do that we need an CustomArgs instance holding the
 				//old (before) and new (after) value of myMessage 

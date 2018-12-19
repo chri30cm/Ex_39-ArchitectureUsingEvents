@@ -19,8 +19,8 @@ namespace ModelViewPresenter01
             //Screen needs to add its MessageSetEventHandler method
             //to the event in message
             message.MessageSetEvent += MessageSetEventHandler;
-			//Also Screen needs to create its worker instance
-
+            //Also Screen needs to create its worker instance
+            MyWorker = new Worker(this, message);
         }
 
         void MessageSetEventHandler (object sender, CustomArgs customArgs)
@@ -48,11 +48,11 @@ namespace ModelViewPresenter01
                 Answer = Console.ReadLine();
                 if (Answer.ToUpper().Equals("R"))
                 {
-                    //The Message.MyMessage should be changed to the reverse
-					//If it was "Hello mom" it should be "mom olleH"
-				} else
+                    MyWorker.ReverseTextValue();
+				}
+                else
                 {
-                    //The Message.MyMessage should change to the text in Answer
+                    MyWorker.SetTextValue()
                 }
                 stop = Answer.ToUpper().Equals(exitString.ToUpper());
             } while (stop == false);
