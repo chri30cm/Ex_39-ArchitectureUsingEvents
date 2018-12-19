@@ -1,4 +1,4 @@
-﻿customArgs : CustomArgsusing System;
+﻿using System;
 
 namespace ModelViewPresenter01
 {
@@ -16,10 +16,11 @@ namespace ModelViewPresenter01
             TextValue = message.MyMessage;
             Warning = "Nothing to warn about";
 
-			//Screen needs to add its MessageSetEventHandler method
-			//to the event in message
-
+            //Screen needs to add its MessageSetEventHandler method
+            //to the event in message
+            message.MessageSetEvent += MessageSetEventHandler;
 			//Also Screen needs to create its worker instance
+
         }
 
         void MessageSetEventHandler (object sender, CustomArgs customArgs)
