@@ -1,4 +1,4 @@
-﻿customArgs : CustomArgsusing System;
+﻿using System;
 
 namespace ModelViewPresenter01
 {
