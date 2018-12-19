@@ -8,6 +8,8 @@ namespace ModelViewPresenter01
         public string Warning { get; set; }
         public string TextValue { get; set; }
 
+        private IScreen screen;
+
         private readonly string exitString = "q";
         public Worker MyWorker { get; set; }
 
@@ -19,7 +21,8 @@ namespace ModelViewPresenter01
             //Screen needs to add its MessageSetEventHandler method
             //to the event in message
             message.MessageSetEvent += MessageSetEventHandler;
-			//Also Screen needs to create its worker instance
+
+            MyWorker = new Worker(screen, message);
 
         }
 
