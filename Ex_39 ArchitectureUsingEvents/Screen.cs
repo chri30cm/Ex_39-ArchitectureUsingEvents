@@ -8,6 +8,8 @@ namespace ModelViewPresenter01
         public string Warning { get; set; }
         public string TextValue { get; set; }
 
+        private IScreen screen;
+
         private readonly string exitString = "q";
         public Worker MyWorker { get; set; }
 
@@ -19,8 +21,9 @@ namespace ModelViewPresenter01
             //Screen needs to add its MessageSetEventHandler method
             //to the event in message
             message.MessageSetEvent += MessageSetEventHandler;
-            //Also Screen needs to create its worker instance
-            MyWorker = new Worker(this, message);
+
+            MyWorker = new Worker(screen, message);
+
         }
 
         void MessageSetEventHandler (object sender, CustomArgs customArgs)
@@ -48,11 +51,11 @@ namespace ModelViewPresenter01
                 Answer = Console.ReadLine();
                 if (Answer.ToUpper().Equals("R"))
                 {
-                    MyWorker.ReverseTextValue();
-				}
-                else
+                    //The Message.MyMessage should be changed to the reverse
+					//If it was "Hello mom" it should be "mom olleH"
+				} else
                 {
-                    MyWorker.SetTextValue()
+                    //The Message.MyMessage should change to the text in Answer
                 }
                 stop = Answer.ToUpper().Equals(exitString.ToUpper());
             } while (stop == false);
